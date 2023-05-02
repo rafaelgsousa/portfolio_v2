@@ -23,6 +23,10 @@ body {
     width: 1024px;
     height: 100%;
     margin: 0 auto;
+    scrollbar-width: thin;
+    scrollbar-color: #000 #fff;
+    scrollbar-track-color: #fff;
+    scrollbar-thumb-color: #000;
 }
 
 header {
@@ -169,6 +173,7 @@ header {
     color: var(--color-text-primary);
     background-color: var(--cor-background-primary);
     opacity: 0.8;
+    padding-right: 30px;
 }
 
 .about-avatar, .about-text {
@@ -562,23 +567,24 @@ header {
 
 #recommendation-title {
     position: absolute;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
+    margin-bottom: 30px;
 }
 
 #carousel {
     min-height: calc(100% - 150px);
     width: 100%;
-    position: absolute;
-    left: 0;
+    position: relative;
     top: 150px;
-    overflow-x: auto;
-    padding: 20px;
+    display: flex;
+    overflow: hidden;
 }
 
 #left-button-carousel, #right-button-carousel {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
@@ -616,13 +622,22 @@ header {
     flex-wrap: nowrap;
     align-items: center;
     list-style: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: absolute;
+    overflow: hidden;
+    position: relative;
     gap: 15px;
-    left: 0;
-    top: 0;
-    z-index: 2;
+    padding: 20px;
+}
+
+#list-recommendations .recommendation:first-child {
+    margin-left: 120px;
+}
+
+#list-recommendations .recommendation:last-child {
+    margin-right: 120px;
+}
+
+.current-recommendation {
+    opacity: 1;
 }
 
 #list-recommendations::-webkit-scrollbar {
@@ -634,12 +649,11 @@ header {
 #list-recommendations .recommendation {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none; 
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     text-align: center;
-    opacity: 0.5;
     transition: all 0.3s ease-in-out;
 }
 
-.current-recommendation {
-    opacity: 1;
-}
+
